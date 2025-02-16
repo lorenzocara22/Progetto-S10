@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../App.css";
 
 const PrevisioniSettimana = ({ previsioni }) => {
   const [indiceGiorno, setIndiceGiorno] = useState(0);
@@ -20,15 +21,21 @@ const PrevisioniSettimana = ({ previsioni }) => {
 
   return (
     <div className="previsioni-container">
-      <h3>Previsioni per il {giorniDisponibili[indiceGiorno]}</h3>
-      {previsioniGiornoCorrente.map((item, index) => (
-        <p key={index}>
-          {item.dt_txt.split(" ")[1]} - {item.main.temp}°C -{" "}
-          {item.weather[0].description}
-        </p>
-      ))}
+      <h3>{giorniDisponibili[indiceGiorno]}</h3>
+      {previsioniGiornoCorrente.map((item, index) => {
+        const iconCode = item.weather[0].icon;
+        const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+
+        return (
+          <p key={index}>
+            {item.dt_txt.split(" ")[1]} {item.main.temp}°C{" "}
+            <img src={iconUrl} alt={item.weather[0].description} width="50" />
+          </p>
+        );
+      })}
 
       <button
+        className="btn btn-light mt-4"
         onClick={() =>
           setIndiceGiorno((prev) =>
             prev + 1 >= giorniDisponibili.length ? 0 : prev + 1

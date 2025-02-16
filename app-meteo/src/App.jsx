@@ -8,7 +8,6 @@ const App = () => {
   return (
     <Router>
       <div className="app-container">
-        <h1 className="main-title">App Meteo</h1>
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/dettaglio/:citta" element={<DettaglioMeteo />} />

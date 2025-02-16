@@ -30,12 +30,11 @@ const DettaglioMeteo = () => {
       <h2 className="titolo-citta">Meteo a {citta}</h2>
 
       {meteo && <MeteoAttuale meteo={meteo} />}
-
-      <h3 className="titolo-previsioni">Previsioni per i prossimi giorni</h3>
+      <h3 className="titolo-previsioni">Previsioni</h3>
 
       {previsioni && <PrevisioniSettimana previsioni={previsioni} />}
 
-      <Link to="/" className="btn btn-secondary mt-4">
+      <Link to="/" className="btn btn-light mt-4">
         Torna alla Home
       </Link>
     </Container>
